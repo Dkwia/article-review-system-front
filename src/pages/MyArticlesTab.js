@@ -15,7 +15,13 @@ const MyArticlesTab = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        setArticles(response.data);
+
+        const articlesWithStatus = response.data.map((article) => ({
+          ...article,
+          status: article.status === 'Draft' ? 'Pending' : article.status || 'Pending',  
+        }));
+
+        setArticles(articlesWithStatus);
       } catch (error) {
         console.error('Failed to fetch articles:', error);
       }
@@ -34,7 +40,7 @@ const MyArticlesTab = () => {
         {articles.map((article) => (
           <li key={article.id}>
             <button onClick={() => toggleExpand(article.id)}>
-              {article.title}
+              {article.title} - <span style={{ color: getStatusColor(article.status) }}>{article.status}</span>
             </button>
 
             {expandedArticleId === article.id && (
@@ -48,6 +54,21 @@ const MyArticlesTab = () => {
       </ul>
     </div>
   );
+};
+
+const getStatusColor = (status) => {
+  switch (status) {
+    case 'Pending':
+      return 'orange';
+    case 'Under Review':
+      return 'blue';
+    case 'Approved':
+      return 'green';
+    case 'Rejected':
+      return 'red';
+    default:
+      return 'gray';
+  }
 };
 
 export default MyArticlesTab;
