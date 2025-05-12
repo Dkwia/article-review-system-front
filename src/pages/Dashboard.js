@@ -28,7 +28,6 @@ const Dashboard = () => {
           }
         />
 
-        {/* Nested Routes */}
         <Route path="author" element={<AuthorPage />} />
         <Route path="reviewer" element={<ReviewerPage />} />
         <Route path="admin" element={<AdminPage />} />

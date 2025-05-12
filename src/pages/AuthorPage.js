@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ProfileTab from './ProfileTab'; // Component for Profile tab
-import MyArticlesTab from './MyArticlesTab'; // Component for My Articles tab
-import SubmitArticleTab from './SubmitArticleTab'; // Component for Submit Article tab
+import ProfileTab from './ProfileTab'; 
+import MyArticlesTab from './MyArticlesTab'; 
+import SubmitArticleTab from './SubmitArticleTab'; 
 
 const AuthorPage = () => {
-  const [activeTab, setActiveTab] = useState('profile'); // Default active tab
-  const [profile, setProfile] = useState(null); // Store profile data
+  const [activeTab, setActiveTab] = useState('profile'); 
+  const [profile, setProfile] = useState(null); 
   const token = localStorage.getItem('token');
 
-  // Fetch user profile on mount
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -51,7 +50,6 @@ const AuthorPage = () => {
         </button>
       </div>
 
-      {/* Render the active tab */}
       {activeTab === 'profile' && <ProfileTab profile={profile} />}
       {activeTab === 'my-articles' && <MyArticlesTab />}
       {activeTab === 'submit-article' && <SubmitArticleTab />}

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // For navigation
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,11 +20,9 @@ const LoginPage = () => {
       );
       const { token, user } = response.data;
 
-      // Store token and role in localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('role', user.role);
 
-      // Redirect to dashboard
       window.location.href = '/dashboard';
     } catch (error) {
       setError('Invalid credentials');
@@ -53,7 +51,6 @@ const LoginPage = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
 
-      {/* Register Button */}
       <div style={{ marginTop: '20px' }}>
         <p>Don't have an account? </p>
         <button onClick={() => navigate('/register')}>Register</button>

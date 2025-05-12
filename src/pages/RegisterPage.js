@@ -7,7 +7,7 @@ const RegisterPage = () => {
     password: '',
     firstName: '',
     lastName: '',
-    role: 'Author', // Default role
+    role: 'Author', 
     bio: '',
     location: '',
     institution: '',
@@ -28,7 +28,7 @@ const RegisterPage = () => {
         formData
       );
       alert('Registration successful!');
-      window.location.href = '/'; // Redirect to login page after registration
+      window.location.href = '/'; 
     } catch (error) {
       setError('Registration failed. Please check your details.');
     }
