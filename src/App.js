@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom'; 
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ReviewerDashboard from './pages/ReviewerDashboard';
 import Dashboard from './pages/Dashboard';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
       
       <Route path="/dashboard/*" element={<Dashboard />} />
+      <Route path="/dashboard/reviewer" element={<ReviewerDashboard />} />
     </Routes>
   );
 }
