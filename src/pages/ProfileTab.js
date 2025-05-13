@@ -61,16 +61,7 @@ const ProfileTab = ({ profile }) => {
               required
             />
           </div>
-          <div>
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              readOnly
-            />
-          </div>
+          
           <div>
             <label>Specialization:</label>
             <input

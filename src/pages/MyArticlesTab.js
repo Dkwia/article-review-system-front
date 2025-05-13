@@ -61,9 +61,9 @@ const getStatusColor = (status) => {
     case 'Pending':
       return 'orange';
     case 'Under Review':
+      return 'gray';
+    case 'Submitted':
       return 'blue';
-    case 'Approved':
-      return 'green';
     case 'Rejected':
       return 'red';
     default:

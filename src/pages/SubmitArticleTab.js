@@ -19,10 +19,8 @@ const SubmitArticleTab = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Convert the tags string into an array
       const tagsArray = formData.tags.split(',').map((tag) => tag.trim());
 
-      // Prepare the payload
       const payload = {
         Title: formData.title,
         Content: formData.content,
@@ -30,7 +28,6 @@ const SubmitArticleTab = () => {
         Tags: tagsArray,
       };
 
-      // Send the POST request to create the article
       const response = await axios.post('http://localhost:5186/api/articles', payload, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -38,16 +35,14 @@ const SubmitArticleTab = () => {
         },
       });
 
-      // Extract the article ID from the response
       const articleId = response.data.id;
 
-      // Submit the article for review
       await axios.put(`http://localhost:5186/api/articles/${articleId}/submit`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       alert('Article submitted for review successfully!');
-      window.location.reload(); // Refresh the page after submission
+      window.location.reload(); 
     } catch (error) {
       setError('Failed to submit article. Please check your input.');
       console.error(error);

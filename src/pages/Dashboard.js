@@ -24,7 +24,7 @@ const Dashboard = () => {
               ? <Navigate to="/dashboard/reviewer" />
               : role === 'Admin'
               ? <Navigate to="/dashboard/admin" />
-              : <NotFound message={`Role not found. Current Role: ${role}`} />
+              : <NotFound message={`Role not found. Current Role: ${role}. Maybe you need to login?`} />
           }
         />
 

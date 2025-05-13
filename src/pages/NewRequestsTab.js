@@ -37,8 +37,10 @@ const NewRequestsTab = () => {
       headers: { Authorization: `Bearer ${token}` },
     });
 
+      
+
     alert(response.data.message || `Article ${action}ed successfully.`);
-    window.location.reload(); // Refresh the page after updating status
+    window.location.reload(); 
   } catch (error) {
     setError(error.response?.data?.error || 'Failed to update article.');
     console.error(error);
