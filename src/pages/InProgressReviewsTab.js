@@ -81,6 +81,29 @@ const InProgressReviewsTab = () => {
     }
   };
 
+  const handleDownload = async (articleId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5186/api/articles/${articleId}/download`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          responseType: 'blob', // Important for downloading files
+        }
+      );
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `article-${articleId}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (error) {
+      setError(error.response?.data?.error || 'Failed to download article.');
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <h3>In Progress Reviews</h3>
@@ -91,6 +114,7 @@ const InProgressReviewsTab = () => {
               <h4>{request.title}</h4>
               <p>Category: {request.category}</p>
               <button onClick={() => setSelectedArticleId(request.id)}>Select Article</button>
+              <button onClick={() => handleDownload(request.id)}>Download PDF</button>
             </li>
           ))}
         </ul>

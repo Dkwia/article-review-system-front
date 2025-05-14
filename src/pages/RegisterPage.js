@@ -62,7 +62,6 @@ const RegisterPage = () => {
         >
           <option value="Author">Author</option>
           <option value="Reviewer">Reviewer</option>
-          <option value="Admin">Admin</option>
         </select>
         <textarea
           name="bio"
