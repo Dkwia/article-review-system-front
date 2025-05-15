@@ -21,7 +21,6 @@ useEffect(() => {
         status: article.status === 'Draft' ? 'Pending' : article.status || 'Pending',
       }));
 
-      // Fetch reviews for articles with "Submitted" status
       const articlesWithReviews = await Promise.all(
         articlesWithStatus.map(async (article) => {
           if (article.status === 'Submitted') {
@@ -34,7 +33,6 @@ useEffect(() => {
               );
               console.log(`Fetched reviews for article ${article.id}:`, reviewResponse.data);
 
-              // Ensure reviews is always an array
               const reviews = Array.isArray(reviewResponse.data) ? reviewResponse.data : [reviewResponse.data];
               return { ...article, reviews };
             } catch (error) {
